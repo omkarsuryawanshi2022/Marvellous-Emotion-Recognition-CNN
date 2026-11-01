@@ -1,0 +1,440 @@
+MARVELLOUS EMOTION RECOGNITION
+COMPLETE PROJECT WORKFLOW
+========================================
+
+PROJECT NAME
+------------
+Marvellous Emotion Recognition Using CNN, OpenCV, FER2013 and Streamlit
+
+PROJECT OBJECTIVE
+-----------------
+The objective is to train a Convolutional Neural Network (CNN) to classify facial expressions into seven categories using the FER2013 dataset.
+
+The project includes:
+1. Dataset preparation.
+2. CNN model training.
+3. Model evaluation.
+4. OpenCV webcam detection.
+5. Streamlit image-based prediction.
+6. Git and GitHub project management.
+
+TECHNOLOGIES
+------------
+Python
+TensorFlow
+Keras
+CNN
+OpenCV
+NumPy
+Pandas
+Scikit-learn
+Matplotlib
+Streamlit
+Pillow
+
+EMOTION CLASSES
+---------------
+0 - Angry
+1 - Disgust
+2 - Fear
+3 - Happy
+4 - Sad
+5 - Surprise
+6 - Neutral
+
+Important: The class order must match the output order of the trained model.
+
+========================================
+STEP 1: OPEN COMMAND PROMPT
+========================================
+
+Open Windows Command Prompt.
+
+========================================
+STEP 2: OPEN PROJECT DIRECTORY
+========================================
+
+Run:
+
+cd /d "C:\Users\HP\OneDrive\Desktop\Marvellous Python\Deep_Learning\CNN\EmotionRecognition"
+
+If your project is stored elsewhere, change the path.
+
+========================================
+STEP 3: ACTIVATE VIRTUAL ENVIRONMENT
+========================================
+
+Run:
+
+MarvellousEmotion_env\Scripts\activate
+
+If the environment does not exist, create it:
+
+py -m venv MarvellousEmotion_env
+MarvellousEmotion_env\Scripts\activate
+python -m pip install --upgrade pip
+
+Do not create another environment if the existing environment is already active.
+
+========================================
+STEP 4: INSTALL DEPENDENCIES
+========================================
+
+Run:
+
+python -m pip install -r requirements.txt
+
+Verify the main packages:
+
+python -c "import cv2, numpy, streamlit, tensorflow as tf; print('OpenCV:', cv2.__version__); print('NumPy:', numpy.__version__); print('Streamlit:', streamlit.__version__); print('TensorFlow:', tf.__version__); print('CascadeClassifier:', hasattr(cv2, 'CascadeClassifier'))"
+
+CascadeClassifier should return True.
+
+========================================
+STEP 5: CHECK PROJECT FILES
+========================================
+
+Run:
+
+dir
+
+Important source files:
+
+Marvellous_Real_Time_Emotion_Detection.py
+Marvellous_Emotion_Recognition_Streamlit.py
+fer2013.csv
+requirements.txt
+README.md
+allprojectflow_indetais.txt
+.gitignore
+
+The trained model may be generated after training:
+
+Emotion_Detection_CNN.keras
+emotion_labels.txt
+
+========================================
+STEP 6: CHECK TRAINING OPTIONS
+========================================
+
+Run:
+
+python Marvellous_Real_Time_Emotion_Detection.py --help
+
+Review the options displayed by your actual training script.
+
+========================================
+STEP 7: PREPARE FER2013 DATASET
+========================================
+
+Place fer2013.csv in the project directory.
+
+The training script expects a standard FER2013 CSV with at least:
+
+emotion
+pixels
+
+The CSV commonly also includes a Usage column.
+
+The dataset contains facial image pixel data and emotion labels.
+
+Keep the dataset locally. Do not push it to GitHub unless redistribution is permitted and intended.
+
+========================================
+STEP 8: TRAIN THE CNN MODEL
+========================================
+
+Run:
+
+python Marvellous_Real_Time_Emotion_Detection.py --mode train --dataset .
+
+Typical training stages:
+
+1. Read the FER2013 CSV.
+2. Parse the emotion label for each row.
+3. Convert pixel strings to numerical arrays.
+4. Reshape images to 48 x 48 grayscale.
+5. Normalize pixel values.
+6. Prepare training, validation and test data.
+7. Build the CNN model.
+8. Train the model for the configured number of epochs.
+9. Validate performance.
+10. Evaluate the trained model.
+11. Save the model and supported outputs.
+
+Training time depends on hardware, dataset size, model configuration and epoch count.
+
+========================================
+STEP 9: VERIFY TRAINED MODEL
+========================================
+
+Run:
+
+dir *.keras
+
+Also check:
+
+dir emotion_labels.txt
+
+Expected model filename:
+
+Emotion_Detection_CNN.keras
+
+If the file is missing, inspect the training output for errors before running inference.
+
+========================================
+STEP 10: RUN OPENCV WEBCAM MODE
+========================================
+
+Run:
+
+python Marvellous_Real_Time_Emotion_Detection.py --mode webcam
+
+Typical workflow:
+
+1. Load the trained CNN model.
+2. Open the webcam.
+3. Read a video frame.
+4. Convert the frame for face detection.
+5. Detect faces with OpenCV Haar Cascade.
+6. Extract each face.
+7. Resize the face to 48 x 48 pixels.
+8. Normalize the pixel values.
+9. Pass the face into the CNN.
+10. Display the predicted emotion and score.
+
+Press Q or Esc to exit if implemented by the script.
+
+========================================
+STEP 11: PREPARE STREAMLIT FILES
+========================================
+
+Ensure these files are in the project folder:
+
+Marvellous_Emotion_Recognition_Streamlit.py
+Emotion_Detection_CNN.keras
+emotion_labels.txt (optional)
+
+The model file is required for prediction.
+
+If emotion_labels.txt is not present, the supplied Streamlit script uses default labels. Verify that the default label order matches the training script.
+
+========================================
+STEP 12: START STREAMLIT
+========================================
+
+Run:
+
+python -m streamlit run Marvellous_Emotion_Recognition_Streamlit.py
+
+Streamlit opens the application in a browser.
+
+========================================
+STEP 13: USE STREAMLIT APPLICATION
+========================================
+
+1. Select Upload image or Take a camera photo.
+2. Upload an image or take a photo.
+3. Click Detect emotion.
+4. The application loads the image.
+5. OpenCV detects face regions.
+6. Each detected face is converted to grayscale.
+7. The face is resized to 48 x 48 pixels.
+8. Pixel values are normalized.
+9. The CNN predicts an emotion category.
+10. The application draws a face rectangle and prediction label.
+11. The results table displays the predicted emotion and model score.
+
+The supplied Streamlit version predicts from still images or camera photos. It does not perform continuous live-video inference.
+
+========================================
+STEP 14: UNDERSTAND PREDICTION OUTPUT
+========================================
+
+Face rectangle:
+The location of a face detected by OpenCV.
+
+Predicted emotion:
+The class with the highest model output score.
+
+Model confidence:
+The highest output score displayed as a percentage.
+
+Important:
+The score is not necessarily a calibrated probability and does not prove a person's actual emotional state.
+
+========================================
+STEP 15: TROUBLESHOOT MODEL FILE ERROR
+========================================
+
+If the app says the model file is missing, run:
+
+dir Emotion_Detection_CNN.keras
+
+If the file does not exist, train the model or copy the correct trained model into the same directory as the Streamlit script.
+
+========================================
+STEP 16: TROUBLESHOOT OPENCV ERROR
+========================================
+
+If you see:
+
+AttributeError: module 'cv2' has no attribute 'CascadeClassifier'
+
+Uninstall conflicting OpenCV packages:
+
+python -m pip uninstall -y opencv-python opencv-contrib-python opencv-python-headless opencv-contrib-python-headless
+
+Install a compatible package:
+
+python -m pip install opencv-contrib-python==4.12.0.88
+
+Verify:
+
+python -c "import cv2; print(cv2.__version__); print(hasattr(cv2, 'CascadeClassifier'))"
+
+========================================
+STEP 17: TROUBLESHOOT STREAMLIT
+========================================
+
+If the streamlit command is not recognized, run:
+
+python -m streamlit run Marvellous_Emotion_Recognition_Streamlit.py
+
+If the browser camera is unavailable:
+
+1. Allow camera access in the browser.
+2. Check Windows camera privacy settings.
+3. Close other applications using the camera.
+4. Try Upload image mode.
+
+========================================
+STEP 18: TROUBLESHOOT NO FACE DETECTED
+========================================
+
+Try:
+
+1. A clear, front-facing face image.
+2. Better lighting.
+3. A larger face in the image.
+4. Less obstruction from masks, hands or objects.
+
+Haar Cascade may fail to detect faces at unusual angles or in low-quality images.
+
+========================================
+STEP 19: TROUBLESHOOT PACKAGE ERRORS
+========================================
+
+Check the Python version:
+
+python --version
+
+Check installed packages:
+
+python -m pip list
+
+Run all commands inside the activated virtual environment.
+
+If TensorFlow and NumPy versions conflict, use package versions compatible with your Python and TensorFlow installation. Recreate the virtual environment only when needed.
+
+========================================
+STEP 20: REVIEW GITIGNORE
+========================================
+
+The .gitignore file should exclude:
+
+- Virtual environments.
+- fer2013.csv.
+- Python cache files.
+- Local IDE settings.
+- Temporary files and logs.
+- Model files if you do not want to publish large weights.
+- Streamlit secrets.
+
+========================================
+STEP 21: CHECK GIT STATUS
+========================================
+
+Run:
+
+git status
+
+Review all changed and untracked files.
+
+========================================
+STEP 22: STAGE PROJECT SOURCE FILES
+========================================
+
+Run:
+
+git add README.md requirements.txt .gitignore allprojectflow_indetais.txt Marvellous_Real_Time_Emotion_Detection.py Marvellous_Emotion_Recognition_Streamlit.py
+
+Review staged files:
+
+git status
+
+Do not stage the dataset or virtual environment.
+
+========================================
+STEP 23: COMMIT PROJECT
+========================================
+
+Run:
+
+git commit -m "Add FER2013 CNN emotion recognition project"
+
+If Git reports that user.name or user.email is not configured, set your Git identity before committing.
+
+========================================
+STEP 24: PUSH TO GITHUB
+========================================
+
+Create an empty repository on GitHub.
+
+If a remote has not been configured, run:
+
+git branch -M main
+git remote add origin YOUR_GITHUB_REPOSITORY_URL
+git push -u origin main
+
+Replace YOUR_GITHUB_REPOSITORY_URL with the repository URL provided by GitHub.
+
+If origin already exists, inspect it before adding another remote:
+
+git remote -v
+
+Never put passwords or private access tokens in source code or documentation.
+
+========================================
+FINAL PROJECT CHECKLIST
+========================================
+
+[ ] Virtual environment activates successfully.
+[ ] Dependencies install successfully.
+[ ] FER2013 dataset is available locally.
+[ ] Training script starts successfully.
+[ ] Trained model is generated.
+[ ] Emotion labels match model output order.
+[ ] OpenCV webcam mode starts, if a webcam is available.
+[ ] Streamlit application starts.
+[ ] Image upload prediction works.
+[ ] Camera-photo prediction works when permissions are granted.
+[ ] README.md is complete.
+[ ] requirements.txt is present.
+[ ] .gitignore is present.
+[ ] allprojectflow_indetais.txt is present.
+[ ] Dataset is excluded from Git.
+[ ] Virtual environment is excluded from Git.
+[ ] Staged files are reviewed before committing.
+[ ] GitHub push completes successfully.
+
+========================================
+RESPONSIBLE USE
+========================================
+
+Facial-expression classification can be inaccurate and can be affected by image quality, lighting, pose, and dataset bias.
+
+Do not treat model output as proof of internal emotion or use it as the sole basis for high-impact decisions.
+
+END OF PROJECT WORKFLOW
+========================================

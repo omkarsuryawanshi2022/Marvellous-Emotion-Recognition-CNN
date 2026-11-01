@@ -1,0 +1,60 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+MarvellousEmotion_env/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# FER2013 dataset - large file
+fer2013.csv
+data/
+datasets/
+dataset/
+
+# Trained model files
+*.keras
+*.h5
+*.hdf5
+*.weights.h5
+
+# Training outputs and logs
+logs/
+runs/
+*.log
+checkpoints/
+model_checkpoints/
+.ipynb_checkpoints/
+
+# Generated plots
+training_history.png
+confusion_matrix.png
+
+# IDE settings
+.vscode/
+.idea/
+
+# Windows and macOS files
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak

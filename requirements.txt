@@ -1,0 +1,11 @@
+# Core app and model inference
+numpy==2.2.6
+opencv-contrib-python==4.12.0.88
+Pillow>=10.0.0
+streamlit>=1.36.0
+tensorflow>=2.18.0
+
+# Training / evaluation utilities used by common FER2013 training workflows
+pandas>=2.2.0
+scikit-learn>=1.4.0
+matplotlib>=3.8.0
